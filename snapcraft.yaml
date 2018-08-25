@@ -10,7 +10,7 @@ confinement: strict
 apps:
   spd-say:
     command: env LANG=C spd-say
-    plugs: [ wayland, x11, speech-dispatcher ]
+    plugs: [ speech-dispatcher ]
 
 parts:
   spd-say:
