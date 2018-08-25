@@ -1,0 +1,25 @@
+name: speech-dispatcher-example-snap
+version: 1
+grade: stable
+summary: Simple tests for the speech-dispatcher snap interface
+description: |
+  Test application for exercising the speech-dispatcher snap interface
+  
+confinement: strict
+
+apps:
+  spd-say:
+    command: env LANG=C spd-say
+    plugs: [ wayland, x11, speech-dispatcher ]
+
+parts:
+  spd-say:
+    plugin: nil
+    stage-packages:
+      - speech-dispatcher
+      - libspeechd2
+    prime:
+      - usr/bin/spd-say
+      - usr/lib/$SNAPCRAFT_ARCH_TRIPLET/lib*.so*
+      - lib/$SNAPCRAFT_ARCH_TRIPLET/lib*.so*
+      - usr/share
